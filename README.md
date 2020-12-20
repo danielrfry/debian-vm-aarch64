@@ -18,7 +18,7 @@ qemu can also be used, as it includes support for virtio devices. As qemu includ
 
 ```
 tar xvjf debian-rootfs-aarch64.tar.bz2
-qemu-system-aarch64 -M virt -cpu cortex-a53 -hda debian-rootfs-aarch64.img -kernel vmlinuz-* -initrd initrd.img-* -append 'root=/dev/vda1 ro nosplash' -nographic -m 2048
+qemu-system-aarch64 -M virt -cpu cortex-a53 -drive format=raw,file=debian-rootfs-aarch64.img -kernel vmlinuz-* -initrd initrd.img-* -append 'root=/dev/vda1 ro nosplash' -nographic -m 2048
 ```
 
 ## Hints
