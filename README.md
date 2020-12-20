@@ -13,6 +13,14 @@ The kernel is based on the stock Debian configuration, except that the required 
 
 The root filesystem is a bare installation of Debian created using `debootstrap`, with minimal configuration changes to make it bootable and enable networking. See [debian-vm-build](https://github.com/danielrfry/debian-vm-build) for more details.
 
+## Booting in qemu
+qemu can also be used, as it includes support for virtio devices. As qemu includes an Arm emulator, this works (with reduced performance) even on non-Arm platforms.
+
+```
+tar xvjf debian-rootfs-aarch64.tar.bz2
+qemu-system-aarch64 -M virt -cpu cortex-a53 -hda debian-rootfs-aarch64.img -kernel vmlinuz-* -initrd initrd.img-* -append 'root=/dev/vda1 ro nosplash' -nographic -m 2048
+```
+
 ## Hints
 
 ### Enlarging the root filesystem
